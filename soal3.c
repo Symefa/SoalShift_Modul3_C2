@@ -22,7 +22,7 @@ void *kepitings(void * arg)
 {
   while (status!=0)
   {
-    sleep(10);
+    sleep(20);
     while (signal1!=0){}
     signal1 = 1;
     kepiting -= 10;
@@ -37,5 +37,17 @@ void *kepitings(void * arg)
 
 void *lohans(void *arg)
 {
+  while (status!=0)
+  {
+    sleep(10);
+    while (signal2!=0){}
+    signal2 = 1;
+    lohan -= 15;
 
+    if (lohan<=0)
+    {
+      status = 0;
+    }
+    signal2 = 0;
+  }
 }

@@ -4,7 +4,6 @@
 #include <string.h>
 #include <unistd.h>
 
-
 void *faktorial(void *arg);
 
 int main(int argc, char *argv[])

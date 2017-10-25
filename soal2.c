@@ -24,7 +24,7 @@ void *player1(void* arg)
     {
       int input = 0;
 
-      printf("player1 turn!\n");
+      printf("%s turn!\n", name1);
 
       while(1)
       {
@@ -34,7 +34,7 @@ void *player1(void* arg)
         {
           printf("tidak boleh lebih dari 4 !\n");
         }
-        else if (input+score1>16)
+        else if (input+filled1>16)
         {
           printf("anda tidak memiliki sisa ruang yang cukup\n");
         }
@@ -49,6 +49,7 @@ void *player1(void* arg)
         while (1) {
           int x;
           printf("masukkan tempat yang mau anda isi\n");
+          scanf("%d", &x);
           if (mine1[x] == 1)
           {
             printf("tempat sudah terisi ranjau lain!\n");
@@ -57,14 +58,23 @@ void *player1(void* arg)
           {
             mine1[x] = 1;
             filled1++;
-
           }
         }
-
       }
+
       for(int i = 0; i < 4; i++)
       {
-
+        int x;
+        printf("tebak posisi ranjau lawan:\n");
+        scanf("%d", &x);
+        if (mine2[x]==1)
+        {
+          score1++;
+        }
+        else
+        {
+          score2++;
+        }
       }
       turn = 1;
     }
@@ -78,15 +88,65 @@ void *player2(void* arg)
   {
     if (turn == 1)
     {
+      int input = 0;
+
+      printf("%s turn!\n", name2);
+
+      while(1)
+      {
+        printf("masukkan banyak ranjau yang akan diisi:\n");
+        scanf("%d", &input);
+        if (input > 4)
+        {
+          printf("tidak boleh lebih dari 4 !\n");
+        }
+        else if (input+filled2>16)
+        {
+          printf("anda tidak memiliki sisa ruang yang cukup\n");
+        }
+        else
+        {
+          break;
+        }
+      }
+
+      for (int i = 0; i<input; i++)
+      {
+        while (1) {
+          int x;
+          printf("masukkan tempat yang mau anda isi\n");
+          scanf("%d", &x);
+          if (mine2[x] == 1)
+          {
+            printf("tempat sudah terisi ranjau lain!\n");
+          }
+          else
+          {
+            mine2[x] = 1;
+            filled2++;
+          }
+        }
+      }
 
       for(int i = 0; i < 4; i++)
       {
-
+        int x;
+        printf("tebak posisi ranjau lawan:\n");
+        scanf("%d", &x);
+        if (mine1[x]==1)
+        {
+          score2++;
+        }
+        else
+        {
+          score1++;
+        }
       }
       turn = 0;
     }
   }
-  wait2 = 0;
+  wait2=0;
+  }
 }
 
 

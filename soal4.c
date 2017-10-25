@@ -1,24 +1,22 @@
 #include <stdio.h>
 #include <pthread.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
-
-int t[3];
-int status;
-pthread_t tid[3];
 
 void *faktorial(void *arg);
-void *faktoriall(void *arg);
-void *faktorialll(void *arg)
 
-int main()
+int main(int argc, char *argv[])
 {
+  pthread_t tid[argc];
+	for(int i=1; i<argc;i++)
+	{
+		int num = atoi(argv[i]);
+		pthread_create(&tid[i],NULL,&faktorial,(void *)num);
+  }
 
-  scanf("%d %d %d", &t[0],&t[1],&t[2]);
-
-    pthread_create(&(tid[0]),NULL,&faktorial,NULL);
-    pthread_create(&(tid[0]),NULL,&faktoriall,NULL);
-    pthread_create(&(tid[0]),NULL,&faktorialll,NULL);
-  for (int i = 0; i<3; i++)
+  for (int i = 1; i<argc; i++)
   {
     pthread_join(tid[i],NULL);
   }
@@ -27,33 +25,13 @@ return 0;
 
 void *faktorial(void *arg)
 {
-  int top=t[0], result=1;
+  int awal = (int)arg;
+  int top=(int) arg;
+  long long result=1;
 	while(top>0)
   {
 	 result*=top;
    top--;
   }
-  printf("Hasil %d! = %d\n", t[0], result);
-}
-
-void *faktoriall(void *arg)
-{
-  int top=t[1], result=1;
-	while(top>0)
-  {
-	 result*=top;
-   top--;
-  }
-  printf("Hasil %d! = %d\n", t[1], result);
-}
-
-void *faktorialll(void *arg)
-{
-  int top=t[2], result=1;
-	while(top>0)
-  {
-	 result*=top;
-   top--;
-  }
-  printf("Hasil %d! = %d\n", t[2], result);
+  printf("Hasil %d! = %d\n", awal, result);
 }

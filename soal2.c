@@ -18,6 +18,13 @@ int score2=0;
 int filled2=0;
 char name2[30];
 
+void printscore()
+{
+  printf("score player %s: %d\n",name1, score1);
+  printf("score player %s: %d\n",name2, score2);
+}
+
+
 void *player1(void* arg)
 {
   while(1)

@@ -67,6 +67,7 @@ void *player1(void* arg)
           {
             mine1[x] = 1;
             filled1++;
+            break;
           }
         }
       }
@@ -84,6 +85,8 @@ void *player1(void* arg)
         {
           score2++;
         }
+      }
+      printscore();
       }
       turn = 1;
     }
@@ -133,6 +136,7 @@ void *player2(void* arg)
           {
             mine2[x] = 1;
             filled2++;
+            break;
           }
         }
       }
@@ -151,11 +155,12 @@ void *player2(void* arg)
           score1++;
         }
       }
+      tebak = 1;
+      printscore();
       turn = 0;
     }
   }
   wait2=0;
-  }
 }
 
 

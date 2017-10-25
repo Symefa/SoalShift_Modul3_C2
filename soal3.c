@@ -15,7 +15,33 @@ void *lohans(void *arg);
 
 int main()
 {
-
+  pthread_t tid[2];
+  pthread_create(&tid[0],NULL,&kepitings,NULL);
+  pthread_create(&tid[1],NULL,&lohans,NULL);
+  int n;
+  while(status!=0){
+   printf("feed 1. kepiting , 2. lohan : ");
+   scanf("%d",&n);
+   switch (n) {
+    case 1:
+      while(signal1!=0){}
+   	  signal1=1;
+   	  if(status!=0) kepiting+=10;
+   	  if(kepiting>100) status=0;
+     	signal1=0;
+    break;
+    case 2:
+      while(signal2!=0){}
+   	  signal2=1;
+   	  if(status!=0) lohan+=10;
+   	  if(lohan>100) status=0;
+   	  signal2=0;
+    break;
+    default:
+      printf("Salah command!\n");
+    break;
+     }
+  }
 return 0;
 }
 

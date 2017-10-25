@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <pthread.h>
+#include <unistd.h>
 
 int status = 1;
 
@@ -32,6 +33,7 @@ void *kepitings(void * arg)
       status = 0;
     }
     signal1 = 0;
+    printf("\nkepiting %d", kepiting);
   }
 }
 
@@ -49,5 +51,6 @@ void *lohans(void *arg)
       status = 0;
     }
     signal2 = 0;
+    printf("\nlohan %d", lohan);
   }
 }

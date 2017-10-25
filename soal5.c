@@ -16,17 +16,17 @@ return 0;
 void *find(void *arg)
 {
   int n = 0;
-  File *source;
+  FILE *source;
   char haystack[100], needle[100];
 
   strcpy(needle,(char *)arg);
   status = 0;
 
-  source = fopen("novel.txt","r");
-  while(fscanf(novel,"%s",kata)!=EOF) {
-		if(strstr(haystack,needle)!=NULL) n++++;
+  source = fopen("Novel.txt","r");
+  while(fscanf(source,"%s",haystack)!=EOF) {
+		if(strstr(haystack,needle)!=NULL) n++;
 	}
 
   printf("Kata %s: %d\n",needle,n);
-  fclose(novel);
+  fclose(source);
 }

@@ -172,6 +172,14 @@ void *player2(void* arg)
 
 int main()
 {
-
+  pthread_t tid[2];
+ printf("masukkan nama1:\n");
+ scanf("%s", name1);
+ printf("masukkan nama2:\n");
+ scanf("%s", name2);
+ pthread_create(&tid[0],NULL,&player1,NULL);
+ pthread_create(&tid[1],NULL,&player2,NULL);
+ pthread_join(tid[0],NULL);
+ pthread_join(tid[1],NULL);
 return 0;
 }

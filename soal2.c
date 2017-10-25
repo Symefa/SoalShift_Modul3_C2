@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-
-int wait = 0;
-pthread_t tid[2];
+int wait = 1;
+int wait2 = 1;
+int turn = 0;
 
 int mine1[16];
 int guess1[4];
@@ -16,7 +16,7 @@ int score2=0;
 int filled2=0;
 char name2[30];
 
-void *play(void* arg)
+void *player1(void* arg)
 {
   while(1)
   {
@@ -71,6 +71,24 @@ void *play(void* arg)
   }
   wait1=0;
 }
+
+void *player2(void* arg)
+{
+  while(1)
+  {
+    if (turn == 1)
+    {
+
+      for(int i = 0; i < 4; i++)
+      {
+
+      }
+      turn = 0;
+    }
+  }
+  wait2 = 0;
+}
+
 
 int main()
 {

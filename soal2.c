@@ -71,8 +71,12 @@ void *player1(void* arg)
           }
         }
       }
-
-      for(int i = 0; i < 4; i++)
+      if (tebak)
+      {
+        int tebaks = 0;
+        printf("masukkan banyak ranjau yang ingin ditebak:\n");
+        scanf("%d\n", &tebaks);
+        for(int i = 0; i < tebaks; i++)
       {
         int x;
         printf("tebak posisi ranjau lawan:\n");
@@ -140,8 +144,10 @@ void *player2(void* arg)
           }
         }
       }
-
-      for(int i = 0; i < 4; i++)
+      int tebaks = 0;
+      printf("masukkan banyak ranjau yang ingin ditebak:\n");
+      scanf("%d\n", &tebaks);
+      for(int i = 0; i < tebaks; i++)
       {
         int x;
         printf("tebak posisi ranjau lawan:\n");

@@ -20,7 +20,19 @@ return 0;
 
 void *kepitings(void * arg)
 {
+  while (status!=0)
+  {
+    sleep(10);
+    while (signal1!=0){}
+    signal1 = 1;
+    kepiting -= 10;
 
+    if (kepiting<=0)
+    {
+      status = 0;
+    }
+    signal1 = 0;
+  }
 }
 
 void *lohans(void *arg)

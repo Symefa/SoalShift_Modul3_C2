@@ -1,8 +1,10 @@
 #include <stdio.h>
+#include <pthread.h>
 
-int wait = 1;
+int wait1 = 1;
 int wait2 = 1;
 int turn = 0;
+int tebak = 0;
 
 int mine1[16];
 int guess1[4];

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <pthread>
+#include <pthread.h>
 
 
 int t[3];
@@ -8,8 +8,7 @@ pthread_t tid[3];
 
 void *faktorial(void *arg)
 {
-  int *x = (int *)arg;
-  int top=t[x], result=1;
+  int top=t[1], result=1;
 	while(top>0)
   {
 	 result*=top;
@@ -19,7 +18,7 @@ void *faktorial(void *arg)
 
 int main()
 {
-  int x[3] = {0,1,2};
+
   scanf("%d %d %d", &t[0],&t[1],&t[2]);
 
   for (int i = 0; i<3; i++)
@@ -28,7 +27,7 @@ int main()
   }
   for (int i = 0; i<3; i++)
   {
-    pthread_join(tid[a],NULL);
+    pthread_join(tid[i],NULL);
   }
 return 0;
 }

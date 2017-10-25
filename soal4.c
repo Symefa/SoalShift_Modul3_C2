@@ -19,6 +19,16 @@ void *faktorial(void *arg)
 
 int main()
 {
+  int x[3] = {0,1,2};
+  scanf("%d %d %d", &t[0],&t[1],&t[2]);
 
+  for (int i = 0; i<3; i++)
+  {
+    pthread_create(&(tid[0]),NULL,&faktorial,(void *)x[i]);
+  }
+  for (int i = 0; i<3; i++)
+  {
+    pthread_join(tid[a],NULL);
+  }
 return 0;
 }
